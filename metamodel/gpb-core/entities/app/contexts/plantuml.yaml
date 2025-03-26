@@ -10,8 +10,8 @@ entities:
       #   areas      - список компонентов в формате fetchAreas
       #   focusId    - идентификатор требующий фокус
       makePumlComponentDiagram: >
-        (
-          /* Обрабатываем параметры */
+        ( 
+          /* Обрабатываем параметры aaa*/
           $areas := areas;
           $components := components;
           $manifest := manifest;
