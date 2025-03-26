@@ -10,8 +10,3 @@ docs:
     type: markdown
     location: ""
     source: README.md
-  doc1742985745656:
-    type: markdown
-    source: auto-1742985745623-9411.md
-    location: /Прикладная архитектура/Список систем/Новый документ
-    title: Новый документ
