@@ -11,7 +11,8 @@ entities:
       #   focusId    - идентификатор требующий фокус
       makePumlComponentDiagram: >
         ( 
-          /* Обрабатываем параметры aaa*/
+          /* Обрабатываем параметры */
+          debugger;
           $areas := areas;
           $components := components;
           $manifest := manifest;
