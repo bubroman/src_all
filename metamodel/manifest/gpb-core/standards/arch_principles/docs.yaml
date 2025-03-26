@@ -1,0 +1,8 @@
+docs:
+  # Первый домен - это имя каталога, если в меню dochub_menu.yaml указан конкретный пункт для вывода информации, то берем имя из указанного файла
+  standards.principles:
+    location: Архитектурные принципы и стандарты/Принципы
+    description: Архитектурные принципы
+    type: markdown
+    source: arch_principles.md
+

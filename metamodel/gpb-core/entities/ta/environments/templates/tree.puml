@@ -1,0 +1,6 @@
+@startwbs
+* Среды ГПБ
+{{#.}}
+{{level}} [[{{&link}} {{title}}]]
+{{/.}}
+@endwbs

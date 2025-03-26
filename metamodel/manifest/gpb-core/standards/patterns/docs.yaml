@@ -1,0 +1,180 @@
+docs:
+  # Первый домен - это имя каталога, второй конечное название в меню
+  standards.partner_gpbapi_interaction:
+    location: Архитектурные принципы и стандарты/Паттерны реализации задач/Запрос от внешнего партнера через АС GPB API
+    autor: Roman Bubnov
+    type: smartants           # Тип документа
+    source:                   # Задаем константные данные для генерации диаграммы
+      config:                 
+        distance: 100         
+        trackWidth: 20        
+      nodes:
+        # Внешняя среда
+        partner:
+          title: АС партнера
+          symbol: system
+        bank:
+          title: ГПБ
+          tag: bank
+          background: lightblue     # добавим фон области
+          opacity: 0.1              # и прозрачность фона
+        bank.gpbdmz:
+          title: DMZ
+          background:  red          # добавим фон области
+          opacity: 0.1              # и прозрачность фона
+        bank.gpbdmz.ptaf:
+          title: PTAF
+          symbol: component
+        bank.gpbdmz.gpbapi:
+          title: GPB API
+          symbol: component
+        bank.gpbdmz.otsgds:
+          title: ОТСГДС
+          symbol: component
+        # Внутренняя среда
+        bank.gpbint:
+          title: INT
+          background:  green        # добавим фон области
+          opacity: 0.1              # и прозрачность фона
+        bank.gpbint.suv:
+          title: СУВ
+          symbol: component
+        bank.gpbint.int_as:
+          title: АС Банка
+          symbol: component
+
+      links:
+        - from: partner
+          to: bank.gpbdmz.ptaf
+          title: Запрос
+          style: "->"
+        - from: bank.gpbdmz.ptaf
+          to: partner
+          title: Результат запроса
+          style: "->"
+        - from: bank.gpbdmz.ptaf
+          to: bank.gpbdmz.gpbapi
+          title: Переадресация запроса
+          style: "->"
+        - from: bank.gpbdmz.gpbapi
+          to: bank.gpbdmz.ptaf
+          title: Результат запроса
+          style: "->"
+        - from: bank.gpbdmz.gpbapi
+          to: bank.gpbdmz.otsgds
+          title: Отправка в очередь запроса
+          style: "->"
+        - from: bank.gpbdmz.otsgds
+          to: bank.gpbdmz.gpbapi
+          title: Чтение из очереди результата запроса
+          style: "->"
+        - from: bank.gpbdmz.otsgds
+          to: bank.gpbint.suv
+          title: Внутренняя MQ-синхронизация
+          style: "->"
+        - from: bank.gpbint.suv
+          to: bank.gpbdmz.otsgds
+          title: Внутренняя MQ-синхронизация
+          style: "->"
+        - from: bank.gpbint.suv
+          to: bank.gpbint.int_as
+          title: Запрос от партнера
+          style: "->"
+        - from: bank.gpbint.int_as
+          to: bank.gpbint.suv
+          title: Ответ партнеру
+          style: "->"
+
+
+      # Анимация
+      animation:
+        # Здесь создаем именованные действия, которы будут доступны в сценариях
+        actions:
+          hello:                            # Идентификатор действия
+          - action: info                    # Информировать пользователя. Доступны: clean / info / focus-node / focus-neighbors
+            text: Давайте мы объясним как работает этот архитектурный паттерн   # Текст, который будет выводиться пользователю
+          focus_partner:
+          - action: focus-node              # Установить фокус на объекте диаграммы
+            target: partner                 # RegEx выражение определяющее с какими идентификаторами будут выделены элементы диаграммы
+          - action: info                    # Одно действие может иметь пакет команд, которые будут выполнены последовательно
+            text: Это система партнера, которой мы предоставляем доступ по API
+          focus_partner_neighbors:
+          - action: focus-neighbors         # Здесь просим выделить всех соседей
+            target: partner                 # По маске
+          - action: info
+            text: Все запросы из АС партнера поступают через PTAF в GPB API
+          focus_ptaf:
+          - action: focus-node
+            target: bank.gpbdmz.ptaf
+          - action: info
+            text: PTAF проверяет сертификат партнера
+          focus_ptaf_gpbapi:
+            - action: focus-neighbors
+              target: bank.gpbdmz.ptaf
+            - action: info
+              text: Если партнерский сертификат валиден, запрос отправляется в GPB API
+          focus_gpbapi:
+          - action: focus-node
+            target: bank.gpbdmz.gpbapi
+          - action: info
+            text: GPB API проводит ФЛК запроса и проверку на SQL-иньекции
+          focus_gpbapi_otsgds:
+            - action: focus-neighbors
+              target: bank.gpbdmz.otsgds
+            - action: info
+              text: После успешной проверки запроса он передаётся в очередь ОТСГДС и далее в СУВ
+          focus_int_as:
+            - action: focus-neighbors
+              target: bank.gpbint.int_as
+            - action: info
+              text: Внутренняя АС банка читает запрос из входящей очереди СУВ, обрабатывает его и отдаёт ответ в исходящую очередь
+          focus_dmz:
+            - action: focus-neighbors
+              target: bank.gpbdmz
+            - action: info
+              text: Ответ на запрос в передаётся партнеру по обратной цепочке в синхроне
+          clean:
+          - action: clean                   # Отчистить действия
+            target: ".*"                    # выполненные над всеми объектами на диаграмме
+
+        scenarios:
+          explain:                          # Идентификатор сценария
+            title: Объясни мне паттерн "Запрос от внешнего партнера через АС GPB API"  # Название сценария для пользователя
+            steps:
+            - action: clean
+            - action: hello                 # Идентификатор действия
+              delay: 2000                   # Длительность шага в миллисекундах
+              voice: true                   # Признак голосовой подсказки. Переход на следующий шаг не происходит пока не будет завершен синтез речи
+            - action: clean
+            - action: focus_partner
+              delay: 2000
+              voice: false
+            - action: focus_partner_neighbors
+              delay: 2000
+              voice: false
+            - action: clean
+            - action: focus_ptaf
+              delay: 2000
+              voice: false
+            - action: clean
+            - action: focus_ptaf_gpbapi
+              delay: 2000
+              voice: false
+            - action: clean
+            - action: focus_gpbapi
+              delay: 2000
+              voice: false
+            - action: clean
+            - action: focus_gpbapi_otsgds
+              delay: 2000
+              voice: false
+            - action: clean
+            - action: focus_int_as
+              delay: 2000
+              voice: false
+            - action: clean
+            - action: focus_dmz
+              delay: 2000
+              voice: false
+            - action: clean
+              voice: false

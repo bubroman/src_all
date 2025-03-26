@@ -1,0 +1,18 @@
+gpbeaf.ta.environments:
+  prod.k8s.gpb_api:
+    title: VS GPB API (пром)
+    description: Промышленный стенд GPB API
+    resource_type: k8s #k8s/vm/phisycal
+    entity: Container
+
+  stage.k8s.gpb_api:
+    title: VS GPB API (П2)
+    description: GPB API (П2)
+    resource_type: k8s #k8s/vm/phisycal
+    entity: Container
+
+  dev.k8s.gpb_api:
+    title: VS GPB API (ПИФТ-0)
+    description: Тестовый стенд GPB API
+    resource_type: k8s #k8s/vm/phisycal
+    entity: Container

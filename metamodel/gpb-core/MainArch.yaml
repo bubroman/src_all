@@ -1,0 +1,147 @@
+
+components:
+# Компоненты верхнего уровня
+  system:
+    title: Автоматизированные системы
+    entity: collections
+
+  partner:
+    title: Партнер Банка
+    entity: actor
+
+  admins:
+    title: Администраторы
+    entity: actor
+
+  admins.app:
+    title: Прикладной администратор
+    entity: actor
+
+  admins.ib:
+    title: Администратор ИБ
+    entity: actor
+
+contexts:
+  systems:
+    title: Автоматизированные системы
+    location: Системы
+    components:
+      - system
+
+# Аспекты - аналитические маркеры, позволяющие выделять
+# сегменты архитектуры.
+aspects:
+  function:                 # Идентификатор аспекта
+    title: Функции          # Название
+    location: Функции       # Размещение в меню
+  service:
+    title: Сервис
+    location: Сервис
+  users:
+    title: Пользователи
+    location: Пользователи
+  users.user:
+    title: Пользователь
+    location: Пользователи/Пользователь
+  users.tuz:
+    title: ТУЗ
+    location: Пользователи/ТУЗ
+
+# Описание технологического стека
+technologies:
+  sections:                           # Определение разделов стека
+    languages:                         # Идентификатор раздела
+      title: Языки программирования   # Название раздела
+    frameworks:
+      title: Фреймворки
+    databases:
+      title: Базы данных
+    databases_nosql:
+      title: Базы данных NoSQL
+    storages:
+      title: Хранилища
+    protocols:
+      title: Протоколы
+    platform:
+      title: Платформа
+    os:
+      title: Операционная система
+    pak:
+      title: ПАК
+  items:                              # Перечисление технологий
+    JAVA:                             # Идентификатор технологии
+      aliases:                        # Синонимы технологии
+        - java
+      title: JAVA                     # Название технологии
+      link: https://www.java.com/ru/  # Ссылка на документацию
+      section: languages              # Идентификатор секции технологии
+      status: adopt                   # Статус технологии adopt / trial / assess / hold
+    Go:
+      title: Go
+      link: https://go.dev/
+      section: languages
+      status: trial
+    TOGAF:
+      title: TOGAF
+      link: https://www.opengroup.org/togaf
+      section: frameworks
+      status: adopt
+    DDD:
+      title: DDD
+      link: https://en.wikipedia.org/wiki/Domain-driven_design
+      section: frameworks
+      status: adopt
+    PostgreSQL:
+      title: PostgreSQL
+      link: https://www.postgresql.org/
+      section: databases
+      status: adopt
+    MongoDB:
+      title: MongoDB
+      link: https://www.mongodb.com/
+      section: databases
+      status: trial
+    Redis:
+      title: Redis
+      link: https://ru.wikipedia.org/wiki/Redis
+      section: databases_nosql
+      status: adopt
+    HTTPS:
+      title: HTTPS
+      link: https://ru.wikipedia.org/wiki/HTTPS
+      section: protocols
+      status: adopt
+    OAuth:
+      title: OAuth
+      link: https://ru.wikipedia.org/wiki/OAuth
+      section: protocols
+      status: adopt
+    OpenShift:
+      title: OpenShift
+      link: https://docs.openshift.com/
+      section: platform
+      status: adopt
+    Elasticsearch:
+      aliases:
+        - ElasticSearch
+      title: Elasticsearch
+      link: https://www.elastic.co/elasticsearch
+      section: storages
+      status: adopt
+    RHEL:
+      title: RHEL
+      link: https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
+      section: os
+      status: adopt
+    Debian:
+      title: Debian
+      link: https://www.debian.org/
+      section: os
+      status: adopt
+    BlueCoat:
+      aliases:
+        - BlueCoat Proxy
+      title: BlueCoat
+      link: https://en.wikipedia.org/wiki/Blue_Coat_Systems
+      section: pak
+      status: trial

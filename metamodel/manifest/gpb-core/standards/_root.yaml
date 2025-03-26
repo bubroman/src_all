@@ -1,0 +1,5 @@
+imports:  
+  - arch_standarts/_root.yaml
+  - arch_principles/_root.yaml  
+  - patterns/_root.yaml
+

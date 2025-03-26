@@ -1,0 +1,14 @@
+imports:
+#  - https://dochub.info/documentation/root.yaml # по прямой ссылке
+  - metamodel/root.yaml
+
+
+# Документы
+docs:
+  dochub.welcome:         #Главная страница
+    title: Банк ГПБ (АО)
+    type: markdown
+    location: ""
+    source: README.md
+
+

@@ -1,0 +1,30 @@
+gpbeaf.ba.valuestream:
+
+  vs_dev_platform:
+    block: VS блока IT
+    department: ДИЭИР
+    vsname: Платформы разработки
+    leader: Борисов Кирилл
+    teams:
+      - name: Платформа DevOps как сервис
+        tehlead: Левин Алексей
+        brief: Core_DevOps
+        activity: 1.Поддержка и развитие 2.Поддержка инструментов
+      - name: Платформа управления контейнеризацией
+        tehlead: Кушневский Иван
+        brief: k8s
+        activity: 1.Создание платформы 2.Развитие практики
+
+  vs_dev_tools:
+    block: VS блока IT
+    department: ДИЭИР
+    vsname: Инструменты разработки
+    leader: Панин Дмитрий
+    teams:
+      - name: Развитие производственной отчетности
+        tehlead: Рудяк Александр
+        activity: 1.Отчетность 2.Мониторинг
+      - name: Развитие инструментов разработки
+        tehlead: Любушкин Александр
+        activity: 1.Local FT 2.Remote FT
+

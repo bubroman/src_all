@@ -1,0 +1,19 @@
+gpbeaf.ta.environments:
+
+  prod.ocp:
+    title: OpenShift (пром)
+    description: Промышленный стенд OpenShift
+    resource_type: openshift #k8s/vm/phisycal/openshift
+    entity: Container
+
+  stage.ocp:
+    title: OpenShift (П2)
+    description: OpenShift (П2)
+    resource_type: openshift #k8s/vm/phisycal/openshift
+    entity: Container
+
+  dev.ocp:
+    title: OpenShift (ПИФТ-0)
+    description: Тестовый стенд OpenShift
+    resource_type: openshift #k8s/vm/phisycal/openshift
+    entity: Container

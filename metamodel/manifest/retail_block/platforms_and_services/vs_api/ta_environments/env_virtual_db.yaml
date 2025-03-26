@@ -1,0 +1,26 @@
+gpbeaf.ta.environments:
+  prod.virtual_db.gpb_api:
+    title: VS GPB API (пром)
+    description: Продуктовая виртуальная среда баз данных GPB API
+    resource_type: vm #vm/phisycal
+    entity: ContainerDb    
+    deployment_units:
+      gpb.vs_api.gpb_api :
+        gpb.vs_api.gpb_api.db:
+          - prod.main        
+
+  stage.virtual_db.gpb_api:
+    title: VS GPB API (П2)
+    description: Виртуальная среда баз данных GPB API (П2)
+    resource_type: vm #vm/phisycal
+    entity: ContainerDb    
+
+  dev.virtual_db.gpb_api:
+    title: VS GPB API (ПИФТ-0)
+    description: Виртуальная среда баз данных GPB API (ПИФТ-0)
+    resource_type: vm #vm/phisycal
+    entity: ContainerDb
+    deployment_units:
+      gpb.vs_api.gpb_api :
+        gpb.vs_api.gpb_api.db:
+          - dev.main

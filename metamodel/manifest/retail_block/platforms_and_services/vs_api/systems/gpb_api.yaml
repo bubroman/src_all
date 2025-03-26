@@ -1,0 +1,256 @@
+components:
+
+# L1 уровень
+  gpb.vs_api.gpb_api:
+    title: GPB API (Gravitee)
+    entity: system
+    guid: 652
+    system_status: implementation
+    dev_model: inhouse
+    short_description: Автоматизированная система GPB API
+    description: >
+      Автоматизированная система GPB API предназначена для...
+    business_owners:
+      - brom
+    application_owner: brom
+    architect: brom
+    budget_holder: brom
+    critical_level: mission_critical
+    system_category: api_gw
+    indicators:
+    # - Для оценок `partially` и `none` комментарий (поле `comment`) обязателен.
+    # - При внесении фактических значений индикаторов укажите текущую дату.
+      - id: indicator_arch_maturity # Система соответствует архитектурным стандартам и принципам Компании
+        fit: fully
+        comment: ОТАР дополняется
+        date: 06.11.2024
+      - id: indicator_code_control # Исходный код системы полностью доступен в любой момент
+        fit: fully
+        comment: Код позаимствован
+        date: 06.11.2024
+      - id: indicator_vendor # Отсутствуют критичные риски вендора (уход с рынка, прекращение поддержки, изменение ценовой политики)
+        fit: fully
+        comment: Внутренняя разработка
+        date: 06.11.2024
+      - id: indicator_team_capacity # Ресурс команды достаточен для развития и сопровождения системы. Оценка должна выполняться на основании соответствия количества задач количеству ресурсов.
+        fit: none
+        comment: Переход на новую систему требует новые вакансии в команде
+        date: 06.11.2024
+      - id: indicator_process # Разработка и сопровождение системы осуществляется в соответствии с целевым процессом
+        fit: partially
+        comment: Целевой процесс по Gateway-концепции в проработке СГА
+        date: 06.11.2024
+    urls:
+      - id: prod
+        type: server
+        title: Адрес промышленного контура
+        url: https://api.gazprombank.ru
+      - id: pift_0
+        type: server
+        title: Адрес тестового контура
+        url: https://testapi.gazprombank.ru
+    repository: https://bitbucket.int.gazprombank.ru
+
+    technologies: # Используемые технологии
+      - PostgreSQL
+      - Java
+      - RESTful
+      - Redis
+      - Elasticsearch
+      - https
+    aspects:
+      - fnk_gpb_api.flk
+      - fnk_gpb_api.autentification
+    links:
+      - id: gpb.dzi.ptaf
+        direction: <--  # Направление стрелки может быть только влево, детали здесь ./enterprise_arch/tools/dochub/arch_desc_guide.md
+        title: HTTPS    # Надпись на связи
+#    libraries:
+#      - <Внесите библиотеки используемые в системе>  # Инструкцию можно почитать здесь ./enterprise_arch/tools/dochub//libraries_guide.md
+    business_entities:
+      - bank
+      - contractor
+
+# L2 уровень. Здесь описываются составляющие компоненты в соответствии с инструкцией: ./enterprise_arch/tools/dochub/arch_desc_guide.md
+
+  gpb.vs_api.gpb_api.gateway_in:
+    title: API Gateway IN
+    entity: component
+    repository: https://bitbucket.int.gazprombank.ru/rest/api/1.0/
+    technologies:
+      - https
+      - OAuth
+      - OpenShift
+      - Java
+    aspects:
+      - fnk_gpb_api.dp_in
+    links:
+      - id: gpb.vs_api.gpb_api.db
+        direction: -->
+        title: HTTPS  # Надпись на связи
+      - id: gpb.vs_api.gpb_api.elastic_search
+        direction: -->
+        title: HTTPS  # Надпись на связи
+    deployment_units:  # Внесите подразделения в соответствии с согласованным процессом
+      prod.main: #<prod>.<имя du>
+        resource_type: openshift #k8s/openshift/virtual/phisycal
+        multiplier: 1
+        cpu: 24 #float - количество ядер
+        ram: 136 #float - количество памяти в Gb
+      dev.main: #<dev>.<имя du>
+        resource_type: openshift #k8s/openshift/virtual/phisycal
+        multiplier: 1
+        cpu: 8 #float - количество ядер
+        ram: 24 #float - количество памяти в Gb
+
+  gpb.vs_api.gpb_api.gateway_out:
+    title: API Gateway OUT
+    entity: component
+    repository: https://bitbucket.int.gazprombank.ru/rest/api/1.0/
+    technologies:
+      - https
+      - OAuth
+      - OpenShift
+      - Java
+    aspects:
+      - fnk_gpb_api.dp_out
+    links:
+      - id: gpb.vs_api.gpb_api.db
+        direction: -->
+        title: HTTPS
+      - id: gpb.vs_api.gpb_api.elastic_search
+        direction: -->
+        title: HTTPS  # Надпись на связи
+    deployment_units:
+      prod.main:
+        resource_type: openshift
+        multiplier: 1
+        cpu: 24
+        ram: 136
+      dev.main:
+        resource_type: openshift
+        multiplier: 1
+        cpu: 8
+        ram: 24
+
+  gpb.vs_api.gpb_api.management_api:
+      title: Management API
+      entity: component
+      links:
+        - id: gpb.vs_api.gpb_api.db
+          title: HTTPS
+          direction: -->
+        - id: gpb.vs_api.gpb_api.elastic_search
+          title: HTTPS
+          direction: -->
+      technologies:
+        - HTTPS
+        - OpenShift
+        - JAVA
+      deployment_units:
+        prod.main:
+          resource_type: openshift
+          multiplier: 1
+          cpu: 8
+          ram: 16
+        dev.main:
+          resource_type: openshift
+          multiplier: 1
+          cpu: 8
+          ram: 32
+
+
+  gpb.vs_api.gpb_api.potal_ui:
+    title: Portal UI
+    entity: component
+    links:
+      - id: gpb.vs_api.gpb_api.management_api
+        title: HTTPS
+        direction: -->
+        type: IA
+      - id: gpb.vs_api.gpb_api.management_api
+        title: HTTPS
+        direction: -->
+        type: AP
+    technologies:
+      - HTTPS
+      - OpenShift
+      - JAVA
+    deployment_units:
+      prod.main:
+        resource_type: openshift
+        multiplier: 1
+        cpu: 8
+        ram: 16
+      dev.main:
+        resource_type: openshift
+        multiplier: 1
+        cpu: 8
+        ram: 32
+
+  gpb.vs_api.gpb_api.management_ui:
+    title: Management UI
+    entity: component
+    links:
+      - id: gpb.vs_api.gpb_api.management_api
+        title: HTTPS
+        direction: -->
+    technologies:
+      - HTTPS
+      - OpenShift
+      - JAVA
+    deployment_units:
+      prod.main:
+        resource_type: openshift
+        multiplier: 1
+        cpu: 8
+        ram: 16
+      dev.main:
+        resource_type: openshift
+        multiplier: 1
+        cpu: 8
+        ram: 32
+
+  gpb.vs_api.gpb_api.db:
+      title: СУБД
+      entity: database # для СУБД нужно указывать именно database
+      technologies:
+        - PostgreSQL
+      deployment_units:
+        prod.main:
+          resource_type: virtual
+          multiplier: 2
+          cpu: 2
+          ram: 8
+        dev.main:
+          resource_type: virtual
+          multiplier: 1
+          cpu: 2
+          ram: 8
+
+  gpb.vs_api.gpb_api.elastic_search:
+    title: ElasticSearch Cluster
+    entity: component
+    technologies:
+      - Elasticsearch
+    deployment_units:
+      prod.main:
+        resource_type: virtual
+        multiplier: 3
+        cpu: 8
+        ram: 32
+      dev.main:
+        resource_type: virtual
+        multiplier: 1
+        cpu: 2
+        ram: 8
+
+# Опциональная документация по системе или её компонентам, документация не выводится в меню, он прикрепляется к карточке системы
+
+#docs:
+#  gpb.<имя подразделения>.<имя системы>.<имя документации>:
+#    type: markdown  # Один из базовых типов документов https://dochub.info/entities/docs/blank?dh-doc-id=dochub.docs
+#    description: <описание назначения документа>
+#    subjects:  # прикрепление документации к карточке системы
+#      - gpb.<имя подразделения>.<имя системы>
+#    source: <относительный путь к документу, например docs/main.md>

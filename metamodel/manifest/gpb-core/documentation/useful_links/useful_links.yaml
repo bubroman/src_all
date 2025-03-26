@@ -1,0 +1,27 @@
+useful_links:
+  - name: Официальный сайт DocHub
+    link: https://dochub.info/main
+    description: На сайте вы можете найти всю необходимую информацию по DocHub, при этом нужно учитывать что сайт построен на платформе DocHub, что даёт общее предствление о его устройстве.
+    section: Архитектура
+
+  - name: Ссылка на репозиторий DocHub в GitHub
+    link: https://github.com/DocHubTeam/DocHub
+    description: В репозитории вы найдете все исходники и инструкцию для установки DocHub.
+    section: Архитектура
+
+  - name: Ссылка на репозиторй с примерами от сообщества
+    link: https://github.com/rpiontik/DocHubExamples
+    description: В репозитории вы найдете примеры от участников сообщества развития DocHub.
+    section: Архитектура
+
+  - name: SEAF
+    link: https://github.com/SEAFTeam/seaf-core
+    description: Sber Enterprise Architecture Framework (SEAF).
+    section: Архитектура
+
+  - name: archpkg
+    link: https://www.npmjs.com/package/archpkg
+    description: Менеджер пакетов архитектурного кода DocHub.
+    section: Архитектура
+
+  

@@ -1,0 +1,18 @@
+gpbeaf.ta.environments:
+  prod.virtual_db:
+    title: Виртуальные БД (пром)
+    description: Продуктовая виртуальная среда баз данных
+    resource_type: vm #vm/phisycal
+    entity: ContainerDb    
+
+  stage.virtual_db:
+    title: Виртуальные БД (П2)
+    description: Виртуальная среда баз данных П2
+    resource_type: vm #vm/phisycal
+    entity: ContainerDb    
+
+  dev.virtual_db:
+    title: Виртуальные БД (ПИФТ-0)
+    description: Виртуальная среда баз данных ПИФТ-0
+    resource_type: vm #vm/phisycal
+    entity: ContainerDb

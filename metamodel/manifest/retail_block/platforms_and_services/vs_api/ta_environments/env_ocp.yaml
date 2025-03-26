@@ -1,0 +1,43 @@
+gpbeaf.ta.environments:
+
+  prod.ocp.gpb_api:
+    title: VS GPB API (пром)
+    description: Промышленный стенд GPB API
+    resource_type: openshift #k8s/vm/phisycal/openshift
+    entity: Container
+    deployment_units:
+      gpb.vs_api.gpb_api:
+        gpb.vs_api.gpb_api.gateway_in:
+          - prod.main
+        gpb.vs_api.gpb_api.gateway_out:
+          - prod.main
+        gpb.vs_api.gpb_api.management_api:
+          - prod.main
+        gpb.vs_api.gpb_api.potal_ui:
+          - prod.main
+        gpb.vs_api.gpb_api.management_ui:
+          - prod.main
+
+  stage.ocp.gpb_api:
+    title: VS GPB API (П2)
+    description: GPB API (П2)
+    resource_type: openshift #k8s/vm/phisycal/openshift
+    entity: Container
+
+  dev.ocp.gpb_api:
+    title: VS GPB API (ПИФТ-0)
+    description: Тестовый стенд GPB API
+    resource_type: openshift #k8s/vm/phisycal/openshift
+    entity: Container
+    deployment_units:
+      gpb.vs_api.gpb_api:
+        gpb.vs_api.gpb_api.gateway_in:
+          - dev.main
+        gpb.vs_api.gpb_api.gateway_out:
+          - dev.main
+        gpb.vs_api.gpb_api.management_api:
+          - dev.main
+        gpb.vs_api.gpb_api.potal_ui:
+          - dev.main
+        gpb.vs_api.gpb_api.management_ui:
+          - dev.main

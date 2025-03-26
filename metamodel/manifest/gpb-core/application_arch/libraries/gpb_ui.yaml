@@ -1,0 +1,15 @@
+gpbeaf.app.libraries:
+  gpb_ui:
+    title: ГПБ UI
+    description: >
+      Библиотека со стилями ГПБ
+    library_type: inhouse
+    control_type: regulated    
+    mentor: fr.vodyanoj
+    maintainers:
+      - cr.duremar
+    repository: https://github.com/rpiontik/DocHubExamples
+    technologies:  # Используемые технологии
+      - Django
+      - Python      
+      - PostgreSQL

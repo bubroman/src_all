@@ -1,0 +1,18 @@
+gpbeaf.ta.environments:
+  prod.k8s:
+    title: K8S (пром)
+    description: Промышленный стенд K8S
+    resource_type: k8s #k8s/vm/phisycal
+    entity: Container
+
+  stage.k8s:
+    title: K8S (П2)
+    description: П2 K8S
+    resource_type: k8s #k8s/vm/phisycal
+    entity: Container
+
+  dev.k8s:
+    title: K8S (ПИФТ-0)
+    description: Тестовый стенд K8S
+    resource_type: k8s #k8s/vm/phisycal
+    entity: Container

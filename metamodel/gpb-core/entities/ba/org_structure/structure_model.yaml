@@ -1,0 +1,180 @@
+entities:  # Сущности расширенной метамодели
+
+  gpbeaf.ba.bank_department: # Идентификатор новой сущности
+    # Название сущности
+    title: Департамент
+    description: >
+      Департамент в банке
+    schema:
+      # Определяем переиспользуемые схемы
+      $defs:
+      # Секция "bank_department" будет представлять из себя объект в понятии JSONSchema
+      type: object
+      # Идентификаторы его полей должны соответствовать паттерну структурированного идентификатора
+      # состоящего из доменов разделенных точкой.
+      # Фактически, объект будет реализовывать массив ключ-значение, где идентификатор поля это ключ,
+      # а его значение - объект сущности.
+      patternProperties:
+        "[a-zA-Z0-9_]*(\\.[a-zA-Z0-9_]*)*$": # Шаблон
+          type: object  # Департамент будет объект
+          properties: # со следующей структурой
+            block:   # Блок
+              title: Блок  # Описание поля, которое помогает понять его смысл и выдается в подсказках
+              type: string
+              enum:
+                - "VS блока IT"
+                - "IT"
+            department:   # Департамент
+              title: Департамент  # Описание поля, которое помогает понять его смысл и выдается в подсказках
+              type: string
+              enum: ["ДИЭИР","ДРПРБ","ДТРНП","ДТРКП","ДИИТ","ДПСИТ"]
+          required:
+            - block
+            - department
+      additionalProperties: false
+#    presentations: # Представления объектов сущности. Обязательно.
+#      blank: # Карточка объекта
+#        # Название представления
+#        title: Карточка департамента
+#        # Параметры, которые требуются представлению в формате JSONSchema
+#        params:
+#          type: object
+#          properties:
+#            id:
+#              type: string
+#          required:
+#            - id
+#        # Тип документа, который будет использоваться для представления
+#        type: table
+#        # Определяем заголовок таблицы
+#        headers:
+#          - value: block          # Идентификатор зависимого компонента
+#            text: Блок            # Заголовок колокнки
+#            sortable: true        # Производить сортировку по колонке
+#            align: left           # Форматирование по горизонтали
+#            width: 40%            # Ширина колонки
+##            link: link
+#          - value: department          # Наименование зависимого компонента
+#            text: Сокращение
+#            sortable: true
+#            align: left           # Форматирование по горизонтали
+#            width: 40%
+##            link: link
+#          - value: department      # Направление связи
+#            text: Наименование
+#            sortable: true
+#            align: center
+#            width: 20%
+        # Источник данных для представления
+#        source: >       # Источник данных для рендера шаблона. Возвращает объект "interactions" по идентификатору переданному в параметрах.
+#        ( gpbeaf.ba.bank_department.$spread().(
+#            $block: *.block,
+#            $department: *.department
+#          )
+#        )
+#    menu: >
+#      (
+#            $departments := $."gpbeaf.ba.bank_department";
+#            $departments.$spread().{
+#                    "link": "/entities/gpbeaf.ba.bank_department/blank?id=" & $keys()[0],
+#                    "location": "Организационная структура" & "/" & *.block & "/" & *.department
+#            }
+#      )
+
+  gpbeaf.ba.vs_team: # Идентификатор новой сущности
+    title: Команда Value Stream
+    description: >
+      Команда VS в банке
+    schema:
+      # Определяем переиспользуемые схемы
+      $defs:
+      # Секция "vs_team" будет представлять из себя объект в понятии JSONSchema
+      type: object
+      patternProperties:
+        "[a-zA-Z0-9_]*(\\.[a-zA-Z0-9_]*)*$": # Шаблон
+          type: object  # команда VS будет объект
+          properties: # со следующей структурой
+            brief: # Краткое название команды
+              title: Название
+              type: string
+              minLength: 1
+            name: # Название команды
+              title: Название
+              type: string
+              minLength: 1
+            tehlead: # Техлид команды
+              title: Технический лидер
+              type: string
+              minLength: 1
+            activity: # Описание команды
+              title: Направление деятельности
+              type: string
+              minLength: 1
+          required:
+            - name
+            - tehlead
+      additionalProperties: false
+
+  gpbeaf.ba.valuestream:
+    title: Value Stream
+    description: >
+      VS в банке
+    schema:
+      type: object
+      patternProperties:
+        "[a-zA-Z0-9_]*(\\.[a-zA-Z0-9_]*)*$":
+          type: object  # VS будет объект
+          properties:   # со следующей структурой
+            department:   # Департамент
+              $ref: "#/$defs/gpbeaf.ba.bank_department"
+            vsname:       # Наименование VS
+              title: Наименование
+              type: string
+              minLength: 5
+            leader:       # Лидер VS
+              title: ФИО лидера
+              type: string
+              minLength: 5
+            teams:        # Команды VS - массив
+              title: Команда
+              type: array
+              minItems: 1 # Минимум одна команда VS
+              items:
+                team:
+                  $ref: "#/$defs/gpbeaf.ba.vs_team"
+          required:
+            - vsname
+            - leader
+            - teams
+      additionalProperties: false
+    presentations:            # Представления объектов сущности. Обязательно.
+      blank:                  # Карточка объекта
+        # Название представления
+        title: Карточка Value Stream
+        # Параметры, которые требуются представлению в формате JSONSchema
+        params:
+          type: object
+          properties:
+            id:
+              type: string
+          required:
+            - id
+        # Тип документа, который будет использоваться для представления
+        type: mermaid
+        # Шаблон, который будет использоваться для рендеринга документа
+        template: templates/streams.mmd
+        # Источник данных для представления
+        source: >       # Источник данных для рендера шаблона. Возвращает объект "interactions" по идентификатору переданному в параметрах.
+          (
+            $valuestreams := $."gpbeaf.ba.valuestream";
+            $lookup($valuestreams, $params.id);
+          )
+
+    menu: >
+      (
+        $valuestreams := $."gpbeaf.ba.valuestream";
+        $valuestreams.$spread().{
+                    "link": "/entities/gpbeaf.ba.valuestream/blank?id=" & $keys()[0],
+                    "location": "Организационная структура" & "/" & *.block & "/" & *.department & "/" & *.vsname
+            }
+      )

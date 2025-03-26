@@ -1,0 +1,6 @@
+imports:
+  - artifacts/_root.yaml
+  - aspects/_root.yaml
+  - systems/_root.yaml
+  - ta_environments/_root.yaml
+  

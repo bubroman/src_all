@@ -1,0 +1,19 @@
+@startuml
+title Диаграмма взаимодействия c АС GPB API (basic-аутентификация)
+actor "[[/architect/components/partner Партнер Банка]]" as user
+participant "[[/architect/components/system.gpb_api.gateway_in Gateway GPB API IN]]" as GW_GPB_API_IN
+database "[[/architect/components/system.gpb_api.db БД GPB API]]" as DB_GPB_API
+group Вызов API
+    user -> GW_GPB_API_IN: Запрос
+    group Авторизация
+        GW_GPB_API_IN -> DB_GPB_API: CLientID/ClientSecret\nили API Key
+        DB_GPB_API -> DB_GPB_API: Проверка наличия\n пользователя в БД
+        group Пользователь не обнаружен
+            DB_GPB_API -> GW_GPB_API_IN: Ошибка авторизации
+            GW_GPB_API_IN -> user: Ошибка авторизации
+        end
+    end
+    DB_GPB_API -> GW_GPB_API_IN: Пользователь авторизован
+    GW_GPB_API_IN -> GW_GPB_API_IN: ФЛК запроса
+end
+@enduml

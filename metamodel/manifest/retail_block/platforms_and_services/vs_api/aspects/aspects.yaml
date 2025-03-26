@@ -1,0 +1,24 @@
+aspects:
+
+# Функционал GPB API
+  fnk_gpb_api:
+    title: GPB API
+    location: GPB API
+
+  fnk_gpb_api.flk:
+    title: Форматно-логический контроль
+    location: Форматно-логический контроль
+
+  fnk_gpb_api.autentification:
+    title: Аутентификация
+    location: Аутентификация
+
+# Входящие интеграции
+  fnk_gpb_api.dp_in:
+    title: API (IN)
+    location: API (IN)
+
+#  Исходящие интеграции
+  fnk_gpb_api.dp_out:
+    title: API (OUT)
+    location: API (OUT)

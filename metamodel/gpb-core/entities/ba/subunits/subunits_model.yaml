@@ -1,0 +1,36 @@
+entities: # Сущности расширенной метамодели
+
+  gpbeaf.ba.subunits:
+    title: Модель управления подразделениями организации
+    description: >
+        При помощи данной сущности описываются справочники для хранения различной статической информации используемой внутри DocHub
+    schema:
+      type: object
+      patternProperties:
+        "[a-zA-Z0-9_]*(\\.[a-zA-Z0-9_]*)*$":
+          type: object
+          properties:
+            title:
+              title: Наименование подразделения
+              type: string
+            type:
+              title: Физический смысл справочника
+              enum: ["su", "vs", "block", "cluster","department",""]
+            owner:
+              title: Владелец
+              type: string
+            parrent:
+              title: Вышестоящий уровень справочника сущности gpbeaf.ba.subunits
+              $ref: "#/$rels/gpbeaf.ba.subunits.subunit"
+            guid:
+              title: Globally unique identifier
+              type: string
+              pattern: "/^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i"
+          required:
+            - title            
+    objects:
+      subunit:
+        route: "/"
+        title: Подразделение
+        symbol: "do"
+

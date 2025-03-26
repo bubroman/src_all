@@ -1,0 +1,18 @@
+gpbeaf.ta.environments:
+  prod.vm:
+    title: Виртуальные машины (пром)
+    description: Промышленный стенд VM
+    resource_type: vm #k8s/vm/phisycal/openshift
+    entity: Container
+
+  stage.vm:
+    title: Виртуальные машины (П2)
+    description: VM (П2)
+    resource_type: openshift #k8s/vm/phisycal/openshift
+    entity: Container
+
+  dev.vm:
+    title: Виртуальные машины (ПИФТ-0)
+    description: Тестовый стенд VM
+    resource_type: vm #k8s/vm/phisycal/openshift
+    entity: Container

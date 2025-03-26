@@ -1,0 +1,496 @@
+technologies:               # Описание технологического стека
+  sections:                 # Определение разделов стека
+    language:               # Идентификатор раздела
+      title: Языки программирования   # Название раздела
+    framework:
+      title: Фреймворки
+    DBMS:
+      title: СУБД
+    tools:
+      title: Инструментарий
+    storages:
+      title: Хранилища
+    browsers:
+      title: Браузеры
+    network_protocols:
+      title: Сетевые протоколы
+    queue:
+      title: Очереди и брокеры сообщений
+    container:
+      title: Средства контейнеризации
+    authorization:
+      title: Стандарты авторизации
+    operation_system:
+      title: Операционные системы
+
+# Описание языков программирования
+  items:                      # Перечисление технологий
+    JavaScript:             # Идентификатор технологии
+      aliases:            # Синонимы технологии
+        - JavaScript
+        - js
+        - JS
+        - javascript
+      title: JavaScript           # Название технологии
+      link: https://ru.wikipedia.org/wiki/JavaScript      # Ссылка на документацию
+      section: language   # Идентификатор секции технологии
+      status: adopt      # Статус технологии adopt / trial / assess / hold
+
+    Python:
+      aliases:
+        - Python
+        - python
+        - py
+      section: language
+      link: https://www.python.org/
+      status: adopt
+
+    Csharp:
+      aliases:
+        - Csharp
+        - c#
+        - C#
+      section: language
+      link: https://ru.wikipedia.org/wiki/C_Sharp
+      status: adopt
+
+    Golang:
+      aliases:
+        - Golang
+        - go
+        - golang
+        - Go
+      section: language
+      link: https://go.dev/
+      status: adopt
+
+    1C:
+      aliases:
+        - 1C
+        - 1c
+      section: language
+      link: https://1c.ru/
+      status: adopt
+
+    Java:
+      aliases:
+        - Java
+        - java
+        - JAVA
+      section: language
+      link: https://ru.wikipedia.org/wiki/Java
+      status: adopt
+
+    Kotlin:
+      aliases:
+        - Kotlin
+      section: language
+      link: https://kotlinlang.org/docs/home.html
+      status: adopt
+
+    Cpp:
+      aliases:
+        - Cpp
+        - cpp
+      section: language
+      link: https://ru.wikipedia.org/wiki/C%2B%2B
+      status: hold
+
+# Описание фреймворков
+    Django:
+      aliases:
+        - Django
+        - django
+      section: framework
+      link: https://www.djangoproject.com
+      status: adopt
+
+    Flask:
+      aliases:
+        - Flask
+        - flask
+      section: framework
+      link: https://flask.palletsprojects.com/
+      status: adopt
+
+    Django_REST:
+      aliases:
+        - Django_REST
+        - Django REST framework
+        - django rest framework
+      section: framework
+      link: https://www.django-rest-framework.org/
+      status: adopt
+
+    FastAPI:
+      aliases:
+        - FastAPI
+        - fastAPI
+      section: framework
+      link: https://fastapi.tiangolo.com/
+      status: adopt
+
+    ASP.NET_MVC:
+      aliases:
+        - ASP.NET MVC
+      section: framework
+      link: https://ru.wikipedia.org/wiki/ASP.NET_MVC_Framework
+      status: adopt
+
+    ASP.NET_Core:
+      aliases:
+        - ASP.NET Core
+      section: framework
+      link: https://ru.wikipedia.org/wiki/ASP.NET_Core
+      status: adopt
+
+    EntityFramework:
+      aliases:
+        - Entity Framework
+        - Entity Framework Core
+      section: framework
+      link: https://docs.microsoft.com/ru-ru/ef/
+      status: adopt
+
+    React:
+      aliases:
+        - React
+        - ReactJS
+        - React.js
+        - reactjs
+      section: framework
+      link: https://reactjs.org/
+      status: adopt
+
+    Vuejs:
+      aliases:
+        - Vuejs
+        - Vue.js
+      section: framework
+      link: https://vuejs.org/
+      status: adopt
+
+    Nodejs:
+      aliases:
+        - Nodejs
+        - Node.js
+      section: framework
+      link: https://nodejs.org/en/
+      status: adopt
+
+    Angular:
+      aliases:
+        - Angular
+        - angular
+      section: framework
+      link: https://angular.io/
+      status: adopt
+
+    RESTFulAPI:
+      aliases:
+        - RESTful
+        - RESTful API
+        - RESTFulAPI
+      section: framework
+      link: https://ru.wikipedia.org/wiki/REST
+      status: adopt
+
+    Spring:
+      aliases:
+        - spring
+        - spring boot
+        - Spring
+      section: framework
+      link: https://spring.io/
+      status: adopt
+
+    Jasper:
+      aliases:
+        - jasper
+        - Jasper
+      section: framework
+      link: https://community.jaspersoft.com/
+      status: adopt
+
+# Очереди и брокеры сообщений
+    Apache_Kafka:
+      aliases:
+        - Apache Kafka
+        - Kafka
+        - apache kafka
+      section: queue
+      link: https://kafka.apache.org/
+      status: adopt
+
+    IBM_MQ:
+      aliases:
+        - IBM MQ
+        - MQ
+        - mq
+      section: queue
+      link: https://www.ibm.com/products/mq
+      status: hold
+
+    RabbitMQ:
+      aliases:
+        - RabbitMQ
+        - RabbitMq
+        - rabbitmq
+      section: queue
+      link: https://www.rabbitmq.com/
+      status: adopt
+
+# Описание СУБД
+    PostgreSQL:
+      aliases:
+        - PostgreSQL
+        - Postgres
+        - postgresql
+      section: DBMS
+      link: https://www.postgresql.org/
+      status: adopt
+
+    MSSQL:
+      aliases:
+        - MSSQL
+        - MS SQL
+        - Microsoft SQL
+      section: DBMS
+      link: https://www.microsoft.com/ru-ru/sql-server
+      status: trial
+
+    MariaDB:
+      aliases:
+        - MariaDB
+      section: DBMS
+      link: https://mariadb.org/
+      status: trial
+
+    MongoDB:
+      aliases:
+        - MongoDB
+      section: DBMS
+      link: https://ru.wikipedia.org/wiki/MongoDB
+      status: trial
+
+    Oracle:
+      aliases:
+        - Oracle
+        - oracle
+      section: DBMS
+      link: https://www.oracle.com/database/
+      status: trial
+
+    Sybase:
+      aliases:
+        - Sybase
+        - sybase
+      section: DBMS
+      link: http://www.sybase.com/
+      status: trial
+
+    Redis:
+      aliases:
+        - Redis
+        - redis
+      section: DBMS
+      link: https://redis.io/
+      status: adopt
+
+# Описание инструментов
+    Git:
+      aliases:
+        - Git
+        - git
+      section: tools
+      link: https://git-scm.com/
+      status: adopt
+
+    Bitbucket:
+      aliases:
+        - Bitbucket
+        - bitbucket
+      section: tools
+      link: https://bitbucket.org/
+      status: adopt
+
+    PluntUML:
+      aliases:
+        - PluntUML
+      section: tools
+      link: https://plantuml.com/ru/
+      status: trial
+
+    DocHub:
+      aliases:
+        - DocHub
+      section: tools
+      link: https://dochub.info/main
+      status: trial
+
+    JDK:
+      aliases:
+        - jdk
+      section: tools
+      link: https://adoptium.net/temurin/releases/
+      status: adopt
+
+    CryptoPro:
+      aliases:
+        - CryptoPro
+        - Cryptopro
+        - cryptopro
+      section: tools
+      link: https://www.cryptopro.ru/
+      status: adopt
+
+    GitlabCI:
+      aliases:
+        - gitlabci
+        - gitlab_ci
+      section: tools
+      link: https://docs.gitlab.com/ee/ci/
+      status: adopt
+
+    Elasticsearch:
+      aliases:
+        - Elasticsearch
+        - elasticsearch
+      section: tools
+      link: https://www.elastic.co/elasticsearch
+      status: adopt
+
+    ELK:
+      aliases:
+        - ELK
+        - elk
+      section: tools
+      link: https://www.elastic.co/elastic-stack
+      status: adopt
+
+    BlueCoat:
+      aliases:
+        - BlueCoat
+        - BlueCoat Proxy
+        - bluecoat proxy
+      section: tools
+      link: https://www.elastic.co/elastic-stack
+      status: adopt
+
+# Описание хранилищ
+    S3MinIO:
+      aliases:
+        - minio
+        - MinIO
+        - s3minio
+        - S3Minio
+        - S3MinIO
+      section: storages
+      link: https://min.io/
+      status: adopt
+
+# Сетевые протоколы
+    HTTP:
+      aliases:
+        - HTTP
+        - http
+      section: network_protocols
+      status: adopt
+
+    HTTPS:
+      aliases:
+        - HTTPS
+        - https
+      section: network_protocols
+      status: adopt
+
+# Средства контейнеризации
+    Docker:
+      aliases:
+        - Docker
+        - docker
+      section: container
+      link: https://www.docker.com/
+      status: adopt
+
+    Kubernetes:
+      aliases:
+        - Kubernetes
+        - kubernetes
+        - kuber
+        - Kuber
+        - K8s
+        - k8s
+      section: container
+      link: https://kubernetes.io/
+      status: adopt
+
+    OpenShift:
+      aliases:
+        - OpenShift
+        - openshift
+        - OCP
+        - ocp
+      section: container
+      link: https://www.redhat.com/en/technologies/cloud-computing/openshift
+      status: trial
+
+# Стандарты авторизации
+
+    OAuth:
+      aliases:
+        - OAuth
+        - OAuth 2.0
+        - oauth
+        - oauth 2.0
+        - OAuth2
+        - oauth2
+      section: authorization
+      link: https://oauth.net/2/
+      status: adopt
+
+    OpenID:
+      aliases:
+        - OpenID Connect
+        - OpenID
+        - OpenID connect
+        - openid
+      section: authorization
+      link: https://openid.net/developers/how-connect-works/
+      status: adopt
+
+    SAML:
+      aliases:
+        - SAML
+        - saml
+        - Security Assertion Markup Language
+        - security assertion markup language
+      section: authorization
+      link: https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language
+      status: adopt
+
+    Kerberos:
+      aliases:
+        - Kerberos
+        - kerberos
+      section: authorization
+      link: https://www.kerberos.org/software/tutorial.html
+      status: adopt
+
+# Операционные системы
+    RHEL:
+      aliases:
+        - RHEL
+        - rhel
+      section: operation_system
+      link: https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
+      status: trial
+
+    Debian:
+      aliases:
+        - Debian
+        - DEBIAN
+        - debian
+      section: operation_system
+      link: https://www.debian.org/
+      status: trial

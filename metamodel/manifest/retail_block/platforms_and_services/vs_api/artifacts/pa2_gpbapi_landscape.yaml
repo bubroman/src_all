@@ -1,0 +1,12 @@
+
+contexts: # Контексты представления прикладной архитектуры (pa - ПА)
+  gpb.vs_api.gpb_api:
+    title: Архитектура GPB API (уровень ПА-L2)
+    location: Детальная архитектура систем ПА-L2/VS API/GPB API # Размещение документа в дереве навигации
+    extra-links: true
+    uml:
+      $autor: Бубнов Р.В.
+      $version: 0.1.0
+      $moment: 20.11.2024
+    components:
+      - gpb.vs_api.gpb_api.*

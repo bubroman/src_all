@@ -1,0 +1,12 @@
+contexts:   # Контексты представления архитектурных компонентов
+  gpb.common:
+    title: ГПБ
+    location: Прикладной ландшафт ПА-L1/ГПБ
+    extra-links: true    
+    uml:      
+      $autor: Роман Бубнов
+      $version: '0.0.1'
+      $moment: 01.11.2024
+    components:
+      - gpb.vs_api.*
+      - gpb.dzi.*

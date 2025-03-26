@@ -1,0 +1,92 @@
+# Конфигурация рендеринга матемодели репозитория
+mm_discovery.stalker:
+  gpb.overview:
+    title: Общая карта
+    location: Метамодель/Общая метамодель
+    order: 10100
+    nodes:
+      gpbeaf:
+        title: GPBEAF
+      gpbeaf.ta:
+        title: Техническая архитектура
+      gpbeaf.app:
+        title: Прикладная архитектура
+      gpbeaf.ia:
+        title: Информационная архитектура
+      gpbeaf.ba:
+        title: Бизнес-архитектура
+    domains:
+      - "**" # Отражаем все домены
+    hooks:
+      after: >
+        (
+            $result := result;
+            $translateId := function($id) {( 
+                $result := $lookup({
+                    "aspects": "gpbeaf.app.aspects",
+                    "components": "gpbeaf.app.components"
+                }, $id);
+                $result ? $result : $id;
+            )};  
+            $merge([
+                $result,
+                {
+                    "nodes": $merge($result.nodes.$spread().(
+                        $id := $keys()[0];
+                        {
+                            $translateId($id): $.*    
+                        }       
+                    )),
+                    "links": [$result.links.(
+                        $merge([$, {"from": $translateId(from), "to": $translateId(to)}]);
+                    )]       
+                }       
+        
+            ]);
+        )
+  gpb.app:
+    title: Прикладная архитектура
+    location: Метамодель/Прикладная архитектура
+    order: 10200
+    nodes:
+      gpbeaf:
+        title: GPBEAF
+      gpbeaf.app:
+        title: Прикладная архитектура
+    domains:
+      - aspects
+      - components      
+      - gpbeaf.app.**
+  gpb.ta:
+    title: Техническая архитектура
+    location: Метамодель/Техническая архитектура
+    order: 10400
+    nodes:
+      gpbeaf:
+        title: GPBEAF
+      gpbeaf.ta:
+        title: Техническая архитектура
+    domains:
+      - gpbeaf.ta.**
+  gpb.ia:
+    title: Информационная архитектура
+    location: Метамодель/Информационная архитектура
+    order: 10300
+    nodes:
+      gpbeaf:
+        title: GPBEAF
+      gpbeaf.ia:
+        title: Информационная архитектура
+    domains:
+      - gpbeaf.ia.**
+  gpb.ba:
+    title: Бизнес-архитектура
+    location: Метамодель/Бизнес-архитектура
+    order: 10500
+    nodes:
+      gpbeaf:
+        title: GPBEAF
+      gpbeaf.ba:
+        title: Бизнес-архитектура
+    domains:
+      - gpbeaf.ba.**

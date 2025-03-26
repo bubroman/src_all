@@ -1,0 +1,55 @@
+gpbeaf.ia.business_entities:
+  bank:
+    title: Банк
+    description: Описание сущности
+    parameters:
+      - name: bank_name
+        description: Наименование банка
+      - name: bik
+        description: БИК банка
+
+  chekingaccount:
+    title: Расчетный счет
+    description: Описание сущности
+
+  contractor:
+    title: Контрагент
+    description: Описание сущности
+
+  contractoraccount:
+    title: Счет контрагента
+    description: Описание сущности
+
+  country:
+    title: Страна
+    description: Описание сущности
+
+  currency:
+    title: Валюта
+    description: Описание сущности
+
+  organization:
+    title: Организация
+    description: Описание сущности
+
+  region:
+    title: Регион
+    description: Описание сущности
+
+  unit:
+    title: Единица измерения
+    description: Описание сущности
+
+  agreementtype:
+    title: Тип договора
+    description: Описание сущности
+  
+  contract:
+    title: Договор
+    description: Описание сущности
+
+  draftagreement:
+    title: Проект договора
+    description: Описание сущности
+
+  

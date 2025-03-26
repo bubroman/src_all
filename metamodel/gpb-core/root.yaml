@@ -1,0 +1,6 @@
+imports:
+  - dochub_menu.yaml
+#  - MainArch.yaml
+  - entities/root.yaml
+  - datasets/root.yaml
+  - functions/root.yaml

@@ -1,0 +1,94 @@
+components:
+
+# L1 уровень
+  gpb.dzi.ptaf:
+    title: PTAF
+    entity: system
+    guid: xxx
+    system_status: production
+    dev_model: inhouse
+    short_description: Автоматизированная система контроля входящего трафика
+    description: >
+      Автоматизированная система предназначена для контроля входящего трафика из сети Internet
+    business_owners:
+      - kovalev
+    application_owner: kovalev
+    architect: kovalev
+    budget_holder: kovalev
+    critical_level: mission_critical
+    system_category: info_sec_sys
+    indicators:
+    # - Для оценок `partially` и `none` комментарий (поле `comment`) обязателен.
+    # - При внесении фактических значений индикаторов укажите текущую дату.
+      - id: indicator_arch_maturity # Система соответствует архитектурным стандартам и принципам Компании
+        fit: fully
+        comment: Утверждено
+        date: 22.11.2024
+      - id: indicator_code_control # Исходный код системы полностью доступен в любой момент
+        fit: fully
+        comment: Утверждено
+        date: 22.11.2024
+      - id: indicator_vendor # Отсутствуют критичные риски вендора (уход с рынка, прекращение поддержки, изменение ценовой политики)
+        fit: fully
+        comment: Внутренняя разработка
+        date: 22.11.2024
+      - id: indicator_team_capacity # Ресурс команды достаточен для развития и сопровождения системы. Оценка должна выполняться на основании соответствия количества задач количеству ресурсов.
+        fit: fully
+        comment:
+        date: 22.11.2024
+      - id: indicator_process # Разработка и сопровождение системы осуществляется в соответствии с целевым процессом
+        fit: fully
+        comment:
+        date: 22.11.2024
+#    urls:
+#      - id: prod
+#        type: server
+#        title: Адрес промышленного контура
+#        url: https://wwww.gazprombank.ru
+#      - id: pift_0
+#        type: server
+#        title: Адрес тестового контура
+#        url: https://www.gazprombank.ru
+    repository: https://bitbucket.int.gazprombank.ru
+
+    technologies: # Используемые технологии
+      - RHEL
+      - Debian
+      - MongoDB
+      - Redis
+#    aspects:
+#      - fnk_gpb_api.flk
+#      - fnk_gpb_api.autentification
+#    links:
+#      - id: <Внесите идентификатор системы, с которой нужно показать связь>
+#        direction: <--              # Направление стрелки может быть только влево, детали здесь ./enterprise_arch/tools/dochub/arch_desc_guide.md
+#        title: <Внесите подпись к связи, если не требуется удалите строку>  # Надпись на связи
+#    libraries:
+#      - <Внесите библиотеки используемые в системе>  # Инструкцию можно почитать здесь ./enterprise_arch/tools/dochub//libraries_guide.md
+    business_entities:
+      - bank
+      - contractor
+
+# Контексты (визуализация уровня ПА L2)
+
+contexts: # Контексты представления прикладной архитектуры (pa - ПА)
+  gpb.dzi.ptaf:
+    title: Архитектура PTAF (уровень ПА-L2)
+    location: Детальная архитектура систем ПА-L2/ДЗИ/PTAF # Размещение документа в дереве навигации
+    extra-links: true
+    uml:
+      $autor: Ковалёв И
+      $version: 0.1.0
+      $moment: 22.11.2024
+    components:
+      - gpb.dzi.ptaf.*
+
+# Опциональная документация по системе или её компонентам, документация не выводится в меню, он прикрепляется к карточке системы
+
+#docs:
+#  gpb.<имя подразделения>.<имя системы>.<имя документации>:
+#    type: markdown  # Один из базовых типов документов https://dochub.info/entities/docs/blank?dh-doc-id=dochub.docs
+#    description: <описание назначения документа>
+#    subjects:  # прикрепление документации к карточке системы
+#      - gpb.<имя подразделения>.<имя системы>
+#    source: <относительный путь к документу, например docs/main.md>

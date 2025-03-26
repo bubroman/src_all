@@ -1,0 +1,49 @@
+contexts:   # Контексты представления архитектурных компонентов
+
+  gpb.vs_api:
+    title: Стрим API
+
+  gpb.vs_api.gpb_api:
+    title: GPB API
+
+  gpb.vs_api.gpb_api.as_is:
+    title: Общий контекст GPB API - архитектура ПА-L1 со всеми связями
+    location: Прикладной ландшафт ПА-L1/VS API/GPB API/Общий контекст
+    extra-links: true    
+    uml:      
+      $autor: Бубнов Р.В.
+      $version: 0.1.0
+      $moment: 22.11.2024
+    components:
+      - gpb.vs_api.*
+
+
+  gpb.vs_api.gpb_api.subunits:
+    title: Общий контекст GPB API - архитектура ПА-L1 со всеми связями
+    location: Прикладной ландшафт ПА-L1/VS API/GPB API/С группировкой по подразделениям
+    extra-links: true
+    add-group: true
+    uml:
+      $autor: Бубнов Р.В.
+      $version: 0.1.0
+      $moment: 21.11.2024
+    components:
+      - gpb.vs_api.*
+
+#  gpb_api.specific_subunit:
+#    title: Общий контекст GPB API - архитектура ПА-L1 со всеми связями
+#    location: Прикладной ландшафт ПА-L1/VS API/GPB API/Отбор по конкретному подразделению
+#    extra-links: true
+#    add-group: true
+#    uml:
+#      $autor: Бубнов Р.В.
+#      $version: 0.1.0
+#      $moment: 21.11.2024
+#    components:
+#      - "**"
+#    # Запрос пока не учитывает extra-links из контекста, поэтому приходиться насильно втыкать этот флаг 'isExtraLinks': true
+#    source: >  # выбираем все системы по subunit, можно передавать более одного значения 'subunit': ['health','other']
+#      (
+#        $eval($.functions.get_systems_for_context, {'manifest': $, 'isExtraLinks': true, 'subunit': ['health']});
+#      )
+#

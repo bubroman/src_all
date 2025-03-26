@@ -1,0 +1,16 @@
+components:
+
+# Ответственные за VS GPB API
+  gpb.brom:
+    title: Бубнов Роман
+    entity: person
+
+# Ответственные за PTAF
+  gpb.kovalev:
+    title: Ковалёв Игорь
+    entity: person
+
+  # Ответственные за АСДИ.Proxy
+  gpb.perepelov:
+    title: Перепелов Алексей
+    entity: person

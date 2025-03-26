@@ -1,0 +1,55 @@
+docs:
+  # Публикация документации по стриму API
+  gpb.documentations.streams.api:
+    location: Стримы/API
+    type: markdown
+    source: readme.md
+
+  gpb.documentations.streams.api.gpb_api:
+    location: Стримы/API/GPB API
+    type: markdown
+    source: gpb_api.md
+
+  gpb.documentations.streams.api.services:
+    location: Стримы/API/GPB API/Сервисы
+    type: table               # Тип документа
+    headers:                  # Заголовки таблицы
+      - value: Name             # Идентификатор поля для вывода в колонке
+        text: Название API   # Заголовок колокнки
+        sortable: true        # Производить сортировку по колонке
+        align: left           # Форматирование по горизонтали
+        width: 20%            # Ширина колонки
+      - value: Base_URL
+        text: Base_URL
+        sortable: true
+        align: left
+      - value: IN_OUT
+        text: Направление
+        sortable: true
+        align: center
+    source:                   # Данные для таблицы (массив)
+      - Name: Файловый сервис
+        Base_URL: https://api.gazprombank.ru
+        IN_OUT: IN/OUT
+      - Name: Яндекс
+        Base_URL: https://api-apiс.gazprombank.ru/
+        IN_OUT: OUT
+
+  gpb.documentations.streams.api.services.file_service:
+    location: Стримы/API/GPB API/Сервисы/Файловый
+    type: OpenAPI
+    base_URL: https://api.gazprombank.ru
+    IN_OUT: IN/OUT
+    subjects:
+      - system.gpb_api.gateway_in
+      - system.gpb_api.gateway_out
+    source: swagger/file_service_2.1.0.6.yaml
+
+  gpb.documentations.streams.api.services.yandex_service:
+    location: Стримы/API/GPB API/Сервисы/Яндекс
+    type: OpenAPI
+    base_URL: https://api-apiс.gazprombank.ru/
+    IN_OUT: OUT
+    subjects:
+      - system.gpb_api.gateway_out
+    source: swagger/yandex_service_0.2.4.yaml

@@ -1,0 +1,48 @@
+#  Расширение для базового описания сущности "Contexts"
+entities:
+  components:
+    title: Компоненты
+    config:
+      root_menu: Прикладная архитектура  # Корневое меню представления компонентов
+    description: >
+      Прикладные компоненты являются составными частями прикладного сервиса
+    schema:
+      patternProperties:
+        "^[a-zA-Z][a-zA-Z0-9_-]*(\\.[a-zA-Z][a-zA-Z0-9_-]*)*$":        
+          type: object
+          properties:
+            description:
+              title: Описание компонента
+              type: string
+            libraries:
+              title: Библиотеки используемые в системе 
+              type: array
+              items:
+                $ref: "#/$rels/gpbeaf.app.libraries.library"
+            business_entities:
+              title: Бизнес-сущности используемые в системе 
+              type: array
+              items:
+                $ref: "#/$rels/gpbeaf.ia.business_entities.business_entity"
+            subunit:
+              title: Подразделение для группировки систем
+              $ref: "#/$rels/gpbeaf.ba.subunits.subunit"
+            business_owners:
+              title: Логины бизнес-владельцев процессов реализованных в системе 
+              type: array
+              items:
+                $ref: "#/$rels/gpbeaf.ia.dictionaries.dictionary"
+            application_owner:
+              title: Логин владельца системы
+              $ref: "#/$rels/gpbeaf.ia.dictionaries.dictionary"
+            architect:
+              title: Логин сотрудника, выполняющего роль системного архитектора для данной системы
+              $ref: "#/$rels/gpbeaf.ia.dictionaries.dictionary"
+            budget_holder:
+              title: Логин сотрудника управляющего бюджетом для данной системы
+              $ref: "#/$rels/gpbeaf.ia.dictionaries.dictionary"
+            aspects:
+              title: Функциональность системы
+              type: array
+              items:
+                $ref: "#/$rels/aspects.function"

@@ -1,0 +1,13 @@
+docs:
+  enterprise_arch.arch_desc_guide:
+    location: Развитие корп архитектуры/Инструменты/DocHub/Инструкции/Руководство по описанию прикладной архитектуры
+    description: Руководство по описанию прикладной архитектуры ГПБ
+    type: markdown    
+    source: arch_desc_guide.md
+
+  enterprise_arch.env_guide:
+    location: Развитие корп архитектуры/Инструменты/DocHub/Инструкции/Руководство по описанию сред развертывания
+    description: Руководство по описанию описанию сред развертывания ГПБ
+    type: markdown    
+    source: env_guide.md
+

@@ -1,0 +1,27 @@
+gpbeaf.ba.subunits:
+  gpb:
+    title: Экосистема ГПБ
+
+  gpb.retail_block:
+    title: Розничный блок
+    type: block
+    owner: Иванов
+    parent: gpb
+
+  gpb.retail_block.platforms_and_services:
+    title: Платформы и сервисы
+    type: cluster
+    owner: Петров
+    parent: gpb.retail_block
+
+  gpb.vs_api:
+    title: Стрим API
+    type: vs
+    owner: Сидоров
+    parent: gpb
+
+  gpb.dzi :
+    title: ДЗИ
+    type: department
+    owner: Ромашкин
+    parent: gpb

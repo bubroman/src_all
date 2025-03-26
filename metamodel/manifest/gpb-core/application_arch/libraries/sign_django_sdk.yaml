@@ -1,0 +1,15 @@
+gpbeaf.app.libraries:
+  sign_django_sdk:
+    title: Sign Django SDK
+    description: >
+      Модуль подписания для приложений Django
+    library_type: inhouse
+    control_type: regulated    
+    mentor: hp.funtik
+    maintainers:
+      - hp.dyadyushka_mokus
+    repository: https://github.com/rpiontik/DocHubExamples
+    technologies:  # Используемые технологии
+      - Django
+      - Python      
+      - PostgreSQL
