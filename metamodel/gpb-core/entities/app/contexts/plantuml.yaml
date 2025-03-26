@@ -12,7 +12,6 @@ entities:
       makePumlComponentDiagram: >
         ( 
           /* Обрабатываем параметры */
-          debugger;
           $areas := areas;
           $components := components;
           $manifest := manifest;
@@ -136,9 +135,10 @@ entities:
       plantuml:
         source: >
           (
+          
             $id := $params."dh-context-id";
             $focusId := $params."dh-focus-id";
-          
+            debugger;
             /* Для теста */
             /*$id := "gpb.vs_api.gpb_api.as_is;*/      
             /*$params := {};*/
