@@ -1,5 +1,5 @@
 imports:
-#  - dochub/root.yaml
+  - dochub/root.yaml
   - gpb-core/root.yaml
 #  - streams/root.yaml
   - mm-discovery/root.yaml
