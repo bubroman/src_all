@@ -110,7 +110,7 @@ entities:
                           & "\")\n";
                   ): "";
               );
-              debugger;
+
               /* Определяем, что область нужно закрыть*/
               $result & (
                 $count($split($domain, ".")) > 1 
@@ -206,6 +206,8 @@ entities:
             $linksCode := $eval($defFunctions.makePumlComponentsLinks, {
               "links": $links
             });
+            $r_code := $header & $elements & $linksCode
+            debugger;
           
             /* Готовим данные для передачи в шаблон */
             {
