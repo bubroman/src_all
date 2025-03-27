@@ -110,6 +110,7 @@ entities:
                           & "\")\n";
                   ): "";
               );
+              debugger;
               /* Определяем, что область нужно закрыть*/
               $result & (
                 $count($split($domain, ".")) > 1 
@@ -138,7 +139,7 @@ entities:
           
             $id := $params."dh-context-id";
             $focusId := $params."dh-focus-id";
-            debugger;
+
             /* Для теста */
             /*$id := "gpb.vs_api.gpb_api.as_is;*/      
             /*$params := {};*/
