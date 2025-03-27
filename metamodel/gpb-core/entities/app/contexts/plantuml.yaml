@@ -206,7 +206,7 @@ entities:
             $linksCode := $eval($defFunctions.makePumlComponentsLinks, {
               "links": $links
             });
-            $r_code := $header & $elements & $linksCode
+            $r_code := $header & $elements & $linksCode;
             debugger;
           
             /* Готовим данные для передачи в шаблон */
